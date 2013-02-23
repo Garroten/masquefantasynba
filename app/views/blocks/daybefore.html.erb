@@ -1,0 +1,22 @@
+<h1>Listing blocks</h1>
+  <%= link_to 'Toda la temporada', blocks_path %>
+  <%= link_to "Día anterior", :controller => "blocks", :action => "daybefore"%>
+
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Tapones</th>
+    <th>Tapones por Partido</th>
+  </tr>
+
+<% @blocks.each do |block| %>
+  <tr>
+    <td><%= link_to  block.player.player, block.player %></td>
+    <td><%= block.BLK %></td>
+    <td><%= block.BLKPG %></td>    
+  </tr>
+<% end %>
+</table>
+
+<br />
+

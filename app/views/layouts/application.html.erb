@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>+ Que Fantasy NBA</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= link_to image_tag('logo.png'), root_path %> 
+  <p>
+    <%= link_to 'tapones', blocks_path %>
+    <%= link_to 'asistencias', assists_path %>
+  </p>
+
+<%= yield %>
+  
+  <p>
+    <%= link_to 'tapones', blocks_path %>
+    <%= link_to 'asistencias', assists_path %>
+  </p>
+
+</body>
+</html>

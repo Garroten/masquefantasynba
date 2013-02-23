@@ -1,0 +1,69 @@
+<%= form_for(@assist) do |f| %>
+  <% if @assist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assist.errors.count, "error") %> prohibited this assist from being saved:</h2>
+
+      <ul>
+      <% @assist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :GP %><br />
+    <%= f.number_field :GP %>
+  </div>
+  <div class="field">
+    <%= f.label :MPG %><br />
+    <%= f.text_field :MPG %>
+  </div>
+  <div class="field">
+    <%= f.label :AST %><br />
+    <%= f.number_field :AST %>
+  </div>
+  <div class="field">
+    <%= f.label :APG %><br />
+    <%= f.number_field :APG %>
+  </div>
+  <div class="field">
+    <%= f.label :T_O %><br />
+    <%= f.number_field :T_O %>
+  </div>
+  <div class="field">
+    <%= f.label :TOPG %><br />
+    <%= f.number_field :TOPG %>
+  </div>
+  <div class="field">
+    <%= f.label :AP48M %><br />
+    <%= f.text_field :AP48M %>
+  </div>
+  <div class="field">
+    <%= f.label :AST_TO %><br />
+    <%= f.text_field :AST_TO %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br />
+    <%= f.number_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br />
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :season %><br />
+    <%= f.text_field :season %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
