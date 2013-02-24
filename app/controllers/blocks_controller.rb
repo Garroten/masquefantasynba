@@ -1,8 +1,9 @@
+require 'will_paginate/array'
 class BlocksController < ApplicationController
   # GET /blocks
   # GET /blocks.json
   def index
-    @blocks = Block.all
+    @blocks = Block.all_season.paginate(:page => params[:page], :per_page => 10)  
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,9 +12,28 @@ class BlocksController < ApplicationController
   end
   
   # GET /blocks/daybefore
-  # GET /blocks.json
   def daybefore
-    @blocks = Block.day_before    
+    @blocks = Block.day_before.paginate(:page => params[:page], :per_page => 10)      
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @blocks }
+    end
+  end
+  
+  # GET /blocks/fivedaysbefore
+  def fivedaysbefore
+    @blocks = Block.five_days_before.paginate(:page => params[:page], :per_page => 10)  
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @blocks }
+    end
+  end
+  
+  # GET /blocks/tendaysbefore
+  def tendaysbefore
+    @blocks = Block.ten_days_before.paginate(:page => params[:page], :per_page => 10)  
 
     respond_to do |format|
       format.html # index.html.erb

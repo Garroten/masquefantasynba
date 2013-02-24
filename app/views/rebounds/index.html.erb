@@ -1,0 +1,65 @@
+<h1>Listing rebounds</h1>
+<%= link_to 'Toda la temporada', rebounds_path %>
+<%= link_to "Día anterior", :controller => "rebounds", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "rebounds", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "rebounds", :action => "tendaysbefore"%>
+
+
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Partidos Jugados</th>
+    <th>Rebotes</th>
+    <th>Rebotes por partido</th>
+    
+    <%#*<th>Id</th>%>
+    <%#*<th>Gp</th>%>
+    <%#*<th>Mpg</th>%>
+    <%#*<th>Off</th>%>
+    <%#*<th>Orpg</th>%>
+    <%#*<th>Def</th>%>
+    <%#*<th>Drpg</th>%>
+    <%#*<th>Reb</th>%>
+    <%#*<th>Rpg</th>%>
+    <%#*<th>Rp40</th>%>
+    <%#*<th>Day</th>%>
+    <%#*<th>Month</th>%>
+    <%#*<th>Year</th>%>
+    <%#*<th>Season</th>%>
+    <%#*<th>Player</th>%>
+    <%#*<th></th>%>
+    <%#*<th></th>%>
+    <%#*<th></th>%>
+  </tr>
+
+<% @rebounds.each do |rebound| %>
+  <tr>
+    <td><%= rebound.player.player %></td>
+    <td><%= rebound.GP %></td>
+    <td><%= rebound.REB %></td>
+    <td><%= rebound.RPG %></td>
+    
+    <%#*<td><%= rebound.id %.></td>%>
+    <%#*<td><%= rebound.GP %.></td>%>
+    <%#*<td><%= rebound.MPG %.></td>%>
+    <%#*<td><%= rebound.OFF %.></td>%>
+    <%#*<td><%= rebound.ORPG %.></td>%>
+    <%#*<td><%= rebound.DEF %.></td>%>
+    <%#*<td><%= rebound.DRPG %.></td>%>
+    <%#*<td><%= rebound.REB %.></td>%>
+    <%#*<td><%= rebound.RPG %.></td>%>
+    <%#*<td><%= rebound.RP40 %.></td>%>
+    <%#*<td><%= rebound.day %.></td>%>
+    <%#*<td><%= rebound.month %.></td>%>
+    <%#*<td><%= rebound.year %.></td>%>
+    <%#*<td><%= rebound.season %.></td>%>
+    <%#*<td><%= rebound.player_id %.></td>%>
+    <%#*<td><%= link_to 'Show', rebound %.></td>%>
+    <%#*<td><%= link_to 'Edit', edit_rebound_path(rebound) %.></td>%>
+    <%#*<td><%= link_to 'Destroy', rebound, :method => :delete, :data => { :confirm => 'Are you sure?' } %.></td>%>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @rebounds %>
+
+<%#= link_to 'New Rebound', new_rebound_path %>

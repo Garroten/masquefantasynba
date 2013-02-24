@@ -1,0 +1,57 @@
+<h1>Listing turnovers</h1>
+<%= link_to 'Toda la temporada', turnovers_path %>
+<%= link_to "Día anterior", :controller => "turnovers", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "turnovers", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "turnovers", :action => "tendaysbefore"%>
+
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Partidos Jugados</th>
+    <th>Pérdidas</th>
+    <th>Pérdidas por partido</th>
+    
+    <%#*<th>Id</th>%>
+    <%#*<th>Gp</th>%>
+    <%#*<th>Mpg</th>%>
+    <%#*<th>T o</th>%>
+    <%#*<th>Topg</th>%>
+    <%#*<th>To48</th>%>
+    <%#*<th>Ast to</th>%>
+    <%#*<th>Stl to</th>%>
+    <%#*<th>Day</th>%>
+    <%#*<th>Month</th>%>
+    <%#*<th>Year</th>%>
+    <%#*<th>Season</th>%>
+    <%#*<th>Player</th>%>
+  </tr>
+
+<% @turnovers.each do |turnover| %>
+  <tr>
+    <td><%= turnover.player.player %></td>
+    <td><%= turnover.GP %></td>
+    <td><%= turnover.T_O %></td>
+    <td><%= turnover.TOPG %></td>
+    
+    <%#*<td><%= turnover.id %.></td>%>
+    <%#*<td><%= turnover.GP %.></td>%>
+    <%#*<td><%= turnover.MPG %.></td>%>
+    <%#*<td><%= turnover.T_O %.></td>%>
+    <%#*<td><%= turnover.TOPG %.></td>%>
+    <%#*<td><%= turnover.TO48 %.></td>%>
+    <%#*<td><%= turnover.AST_TO %.></td>%>
+    <%#*<td><%= turnover.STL_TO %.></td>%>
+    <%#*<td><%= turnover.day %.></td>%>
+    <%#*<td><%= turnover.month %.></td>%>
+    <%#*<td><%= turnover.year %.></td>%>
+    <%#*<td><%= turnover.season %.></td>%>
+    <%#*<td><%= turnover.player_id %.></td>%>
+    <%#*<td><%= link_to 'Show', turnover %.></td>%>
+    <%#*<td><%= link_to 'Edit', edit_turnover_path(turnover) %.></td>%>
+    <%#*<td><%= link_to 'Destroy', turnover, :method => :delete, :data => { :confirm => 'Are you sure?' } %.></td>%>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @turnovers %>
+
+<%#= link_to 'New Turnover', new_turnover_path %>

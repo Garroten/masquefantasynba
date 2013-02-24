@@ -1,0 +1,25 @@
+<h1>Listing rebounds</h1>
+<%= link_to 'Toda la temporada', rebounds_path %>
+<%= link_to "Día anterior", :controller => "rebounds", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "rebounds", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "rebounds", :action => "tendaysbefore"%>
+
+
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Partidos Jugados</th>
+    <th>Rebotes</th>
+    <th>Rebotes por partido</th>
+  </tr>
+
+<% @rebounds.each do |rebound| %>
+  <tr>
+    <td><%= rebound.player.player %></td>
+    <td><%= rebound.GP %></td>
+    <td><%= rebound.REB %></td>
+    <td><%= rebound.RPG %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @rebounds %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223164100) do
+ActiveRecord::Schema.define(:version => 20130224190842) do
 
   create_table "assists", :force => true do |t|
     t.integer  "GP"
@@ -47,9 +47,103 @@ ActiveRecord::Schema.define(:version => 20130223164100) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "fouls", :force => true do |t|
+    t.integer  "GP"
+    t.float    "MPG"
+    t.integer  "PF"
+    t.integer  "PFPG"
+    t.float    "PFP48M"
+    t.integer  "eject"
+    t.integer  "day"
+    t.integer  "month"
+    t.integer  "year"
+    t.string   "season"
+    t.string   "player_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "players", :force => true do |t|
     t.string   "player"
     t.string   "team"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rebounds", :force => true do |t|
+    t.integer  "GP"
+    t.float    "MPG"
+    t.integer  "OFF"
+    t.float    "ORPG"
+    t.integer  "DEF"
+    t.float    "DRPG"
+    t.integer  "REB"
+    t.float    "RPG"
+    t.float    "RP40"
+    t.integer  "day"
+    t.integer  "month"
+    t.integer  "year"
+    t.string   "season"
+    t.string   "player_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "scores", :force => true do |t|
+    t.integer  "GP"
+    t.float    "MPG"
+    t.integer  "PTS"
+    t.float    "FGM"
+    t.float    "FGA"
+    t.float    "FG"
+    t.float    "_3PM"
+    t.float    "_3PA"
+    t.float    "_3P"
+    t.float    "FTM"
+    t.float    "FTA"
+    t.float    "FT"
+    t.integer  "day"
+    t.integer  "month"
+    t.integer  "year"
+    t.string   "season"
+    t.string   "player_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "steals", :force => true do |t|
+    t.integer  "GP"
+    t.float    "MPG"
+    t.integer  "STL"
+    t.float    "STPG"
+    t.float    "STP48M"
+    t.integer  "T_O"
+    t.float    "TOPG"
+    t.integer  "PF"
+    t.float    "ST_TO"
+    t.float    "ST_TF"
+    t.integer  "day"
+    t.integer  "month"
+    t.integer  "year"
+    t.string   "season"
+    t.string   "player_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "turnovers", :force => true do |t|
+    t.integer  "GP"
+    t.float    "MPG"
+    t.integer  "T_O"
+    t.float    "TOPG"
+    t.float    "TO48"
+    t.float    "AST_TO"
+    t.float    "STL_TO"
+    t.integer  "day"
+    t.integer  "month"
+    t.integer  "year"
+    t.string   "season"
+    t.string   "player_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,0 +1,23 @@
+<h1>Listing steals</h1>
+<%= link_to 'Toda la temporada', fouls_path %>
+<%= link_to "Día anterior", :controller => "steals", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "steals", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "steals", :action => "tendaysbefore"%>
+
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Robos</th>
+    <th>Robos por partido</th>
+  </tr>
+
+<% @steals.each do |steal| %>
+  <tr>
+    <td><%= steal.player.player %></td>
+    <td><%= steal.STL %></td>
+    <td><%= steal.STPG %></td>        
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @steals %>

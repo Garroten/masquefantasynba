@@ -1,0 +1,22 @@
+<h1>Listing turnovers</h1>
+<%= link_to 'Toda la temporada', turnovers_path %>
+<%= link_to "Día anterior", :controller => "turnovers", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "turnovers", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "turnovers", :action => "tendaysbefore"%>
+
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Pérdidas</th>
+    <th>Pérdidas por partido</th>  
+  </tr>
+
+<% @turnovers.each do |turnover| %>
+  <tr>
+    <td><%= turnover.player.player %></td>
+    <td><%= turnover.T_O %></td>
+    <td><%= turnover.TOPG %></td>        
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @turnovers %>

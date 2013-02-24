@@ -1,0 +1,81 @@
+<%= form_for(@steal) do |f| %>
+  <% if @steal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@steal.errors.count, "error") %> prohibited this steal from being saved:</h2>
+
+      <ul>
+      <% @steal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :GP %><br />
+    <%= f.number_field :GP %>
+  </div>
+  <div class="field">
+    <%= f.label :MPG %><br />
+    <%= f.text_field :MPG %>
+  </div>
+  <div class="field">
+    <%= f.label :STL %><br />
+    <%= f.number_field :STL %>
+  </div>
+  <div class="field">
+    <%= f.label :STPG %><br />
+    <%= f.text_field :STPG %>
+  </div>
+  <div class="field">
+    <%= f.label :STP48M %><br />
+    <%= f.text_field :STP48M %>
+  </div>
+  <div class="field">
+    <%= f.label :T_O %><br />
+    <%= f.number_field :T_O %>
+  </div>
+  <div class="field">
+    <%= f.label :TOPG %><br />
+    <%= f.text_field :TOPG %>
+  </div>
+  <div class="field">
+    <%= f.label :PF %><br />
+    <%= f.number_field :PF %>
+  </div>
+  <div class="field">
+    <%= f.label :ST_TO %><br />
+    <%= f.text_field :ST_TO %>
+  </div>
+  <div class="field">
+    <%= f.label :ST_TF %><br />
+    <%= f.text_field :ST_TF %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br />
+    <%= f.number_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br />
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :season %><br />
+    <%= f.text_field :season %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

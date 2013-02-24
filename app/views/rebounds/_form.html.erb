@@ -1,0 +1,77 @@
+<%= form_for(@rebound) do |f| %>
+  <% if @rebound.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rebound.errors.count, "error") %> prohibited this rebound from being saved:</h2>
+
+      <ul>
+      <% @rebound.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :GP %><br />
+    <%= f.number_field :GP %>
+  </div>
+  <div class="field">
+    <%= f.label :MPG %><br />
+    <%= f.text_field :MPG %>
+  </div>
+  <div class="field">
+    <%= f.label :OFF %><br />
+    <%= f.number_field :OFF %>
+  </div>
+  <div class="field">
+    <%= f.label :ORPG %><br />
+    <%= f.text_field :ORPG %>
+  </div>
+  <div class="field">
+    <%= f.label :DEF %><br />
+    <%= f.number_field :DEF %>
+  </div>
+  <div class="field">
+    <%= f.label :DRPG %><br />
+    <%= f.text_field :DRPG %>
+  </div>
+  <div class="field">
+    <%= f.label :REB %><br />
+    <%= f.number_field :REB %>
+  </div>
+  <div class="field">
+    <%= f.label :RPG %><br />
+    <%= f.text_field :RPG %>
+  </div>
+  <div class="field">
+    <%= f.label :RP40 %><br />
+    <%= f.text_field :RP40 %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br />
+    <%= f.number_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br />
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :season %><br />
+    <%= f.text_field :season %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

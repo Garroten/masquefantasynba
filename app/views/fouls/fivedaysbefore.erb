@@ -1,0 +1,25 @@
+<h1>Listing fouls</h1>
+<%= link_to 'Toda la temporada', fouls_path %>
+<%= link_to "Día anterior", :controller => "fouls", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "fouls", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "fouls", :action => "tendaysbefore"%>
+
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Partidos Jugados</th>
+    <th>Faltas personales</th>
+    <th>Faltas personales por partido</th> 
+  </tr>
+
+<% @fouls.each do |foul| %>
+  <tr>
+    <td><%= foul.player.player %></td>
+    <td><%= foul.GP %></td>
+    <td><%= foul.PF %></td>
+    <td><%= foul.PFPG %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @fouls %>

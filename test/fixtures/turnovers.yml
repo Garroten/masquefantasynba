@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  GP: 1
+  MPG: 1.5
+  T_O: 1
+  TOPG: 1.5
+  TO48: 1.5
+  AST_TO: 1.5
+  STL_TO: 1.5
+  day: 1
+  month: 1
+  year: 1
+  season: MyString
+  player_id: MyString
+
+two:
+  id: 1
+  GP: 1
+  MPG: 1.5
+  T_O: 1
+  TOPG: 1.5
+  TO48: 1.5
+  AST_TO: 1.5
+  STL_TO: 1.5
+  day: 1
+  month: 1
+  year: 1
+  season: MyString
+  player_id: MyString

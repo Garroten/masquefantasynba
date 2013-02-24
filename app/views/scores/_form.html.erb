@@ -1,0 +1,89 @@
+<%= form_for(@score) do |f| %>
+  <% if @score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@score.errors.count, "error") %> prohibited this score from being saved:</h2>
+
+      <ul>
+      <% @score.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :GP %><br />
+    <%= f.number_field :GP %>
+  </div>
+  <div class="field">
+    <%= f.label :MPG %><br />
+    <%= f.text_field :MPG %>
+  </div>
+  <div class="field">
+    <%= f.label :PTS %><br />
+    <%= f.number_field :PTS %>
+  </div>
+  <div class="field">
+    <%= f.label :FGM %><br />
+    <%= f.text_field :FGM %>
+  </div>
+  <div class="field">
+    <%= f.label :FGA %><br />
+    <%= f.text_field :FGA %>
+  </div>
+  <div class="field">
+    <%= f.label :FG %><br />
+    <%= f.text_field :FG %>
+  </div>
+  <div class="field">
+    <%= f.label :3PM %><br />
+    <%= f.text_field :3PM %>
+  </div>
+  <div class="field">
+    <%= f.label :3PA %><br />
+    <%= f.text_field :3PA %>
+  </div>
+  <div class="field">
+    <%= f.label :3P %><br />
+    <%= f.text_field :3P %>
+  </div>
+  <div class="field">
+    <%= f.label :FTM %><br />
+    <%= f.text_field :FTM %>
+  </div>
+  <div class="field">
+    <%= f.label :FTA %><br />
+    <%= f.text_field :FTA %>
+  </div>
+  <div class="field">
+    <%= f.label :FT %><br />
+    <%= f.text_field :FT %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br />
+    <%= f.number_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br />
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :season %><br />
+    <%= f.text_field :season %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

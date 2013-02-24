@@ -7,6 +7,7 @@
 <table>
   <tr>
     <th>Jugador</th>
+    <th>Partidos Jugados</th>
     <th>Tapones</th>
     <th>Tapones por Partido</th>
   </tr>
@@ -14,10 +15,10 @@
 <% @blocks.each do |block| %>
   <tr>
     <td><%= link_to  block.player.player, block.player %></td>
+    <td><%= block.GP %></td>
     <td><%= block.BLK %></td>
     <td><%= block.BLKPG %></td>    
   </tr>
 <% end %>
 </table>
 <%= will_paginate @blocks %>
-
