@@ -1,25 +1,38 @@
-<h1>Listing assists</h1>
-<%= link_to 'Toda la temporada', assists_path %>
-<%= link_to "Día anterior", :controller => "assists", :action => "daybefore"%>
-<%= link_to "Últimos 5 días", :controller => "assists", :action => "fivedaysbefore"%>
-<%= link_to "Últimos 10 días", :controller => "assists", :action => "tendaysbefore"%>
 
-<table>
-  <tr>
-    <th>Jugador</th>
-    <th>Partidos Jugados</th>
-    <th>Asistencias</th>
-    <th>Asistencias por Partido</th>    
-  </tr>
+  <nav id="menu_arriba">
+    <ul>
+      <li><%= link_to 'Toda la temporada', assists_path %></li>
+      <li><%= link_to "Día anterior", :controller => "assists", :action => "daybefore"%></li>
+      <li><%= link_to "Últimos 5 días", :controller => "assists", :action => "fivedaysbefore"%></li>
+      <li><%= link_to "Últimos 10 días", :controller => "assists", :action => "tendaysbefore"%></li>
+    </ul>
+    </nav>    
+</header>
 
-<% @assists.each do |assist| %>
-  <tr>
-    <td><%= link_to  assist.player.player, assist.player %></td>
-    <td><%= assist.GP %></td>
-    <td><%= assist.AST %></td>
-    <td><%= assist.ASTPG %></td>
-  </tr>
-<% end %>
-</table>
+<section id="azul">
+  <div class="transazul">
+    <div class="fondotransBus">
 
-<%= will_paginate @assists %>
+
+    </div>    
+    <table>
+      <tr>
+        <th>Jugador</th>
+        <th>Partidos Jugados</th>
+        <th>Asistencias</th>
+        <th>Asistencias por Partido</th>    
+      </tr>
+
+    <% @assists.each do |assist| %>
+      <tr>
+        <td><%= link_to  assist.player.player, assist.player %></td>
+        <td><%= assist.GP %></td>
+        <td><%= assist.AST %></td>
+        <td><%= assist.ASTPG %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <%= will_paginate @assists %>
+  </div>
+</section>
