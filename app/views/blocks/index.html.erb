@@ -1,58 +1,45 @@
-
-    <nav id="menu_arriba">
-        <ul>
-            <li><%= link_to 'Toda la temporada', blocks_path %></li>
-            <li><%= link_to "Día anterior", :controller => "blocks", :action => "daybefore"%></li>
-            <li><%= link_to "Últimos 5 días", :controller => "blocks", :action => "fivedaysbefore"%></li>
-            <li><%= link_to "Últimos 10 días", :controller => "blocks", :action => "tendaysbefore"%></li>
-        </ul>
-    </nav>    
-</header>
-
-<section id="azul">
-    <div class="transazul">
-        <div class="fondotransBus">
+<h1>Listing blocks</h1>
+<%= link_to 'Toda la temporada', blocks_path %>
+<%= link_to "Día anterior", :controller => "blocks", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "blocks", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "blocks", :action => "tendaysbefore"%>
 
 
-        </div>    
-        <table>
-            <tr>
-                <th>Jugador</th>
-                <th>Partidos Jugados</th>
-                <th>Tapones</th>
-                <th>Tapones por Partido</th>
-            </tr>
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Partidos Jugados</th>
+    <th>Tapones</th>
+    <th>Tapones por Partido</th>
+  </tr>
 
-            <% @blocks.each do |block| %>
-            <tr>
-                <td><%= link_to  block.player.player, block.player %></td>
-                <td><%= block.GP %></td>
-                <td><%= block.BLK %></td>
-                <td><%= block.BLKPG %></td>
-                
-                
-                <!--td><.%= block.id %></td>
-                <td><.%= block.GP %></td>
-                <td><.%= block.MPG %></td>
-                <td><.%= block.BLK %></td>
-                <td><.%= block.PF %></td>
-                <td><.%= block.BLKPG %></td>
-                <td><.%= block.BLKP48M %></td>
-                <td><.%= block.BLK_PF %></td>
-                <td><.%= block.day %></td>
-                <td><.%= block.month %></td>
-                <td><.%= block.year %></td>
-                <td><.%= block.season %></td-->
-                
-                <!--td><.%= link_to 'Show', block %></td>
-                <td><.%= link_to 'Edit', edit_block_path(block) %></td>
-                <td><.%= link_to 'Destroy', block, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td-->
-            </tr>
-            <% end %>
-        </table>
-        <%= will_paginate @blocks %>
-    </div>
-</section>
-
+<% @blocks.each do |block| %>
+  <tr>
+    <td><%= link_to  block.player.player, block.player %></td>
+    <td><%= block.GP %></td>
+    <td><%= block.BLK %></td>
+    <td><%= block.BLKPG %></td>
+    
+    
+    <!--td><.%= block.id %></td>
+    <td><.%= block.GP %></td>
+    <td><.%= block.MPG %></td>
+    <td><.%= block.BLK %></td>
+    <td><.%= block.PF %></td>
+    <td><.%= block.BLKPG %></td>
+    <td><.%= block.BLKP48M %></td>
+    <td><.%= block.BLK_PF %></td>
+    <td><.%= block.day %></td>
+    <td><.%= block.month %></td>
+    <td><.%= block.year %></td>
+    <td><.%= block.season %></td-->
+    
+    <!--td><.%= link_to 'Show', block %></td>
+    <td><.%= link_to 'Edit', edit_block_path(block) %></td>
+    <td><.%= link_to 'Destroy', block, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td-->
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @blocks %>
 
 <!--%= link_to 'New Block', new_block_path %-->

@@ -11,21 +11,19 @@
     </div>
   <% end %>
 
-<table>
-  <tr class="field">
-    <td><%= f.label :id %></td>
-    <td><%= f.number_field :id %></td>
-  </tr>
-  <tr class="field">
-    <td><%= f.label :player %></td>
-    <td><%= f.text_field :player %></td>
-  </tr>
-  <tr class="field">
-    <td><%= f.label :team %></td>
-    <td><%= f.text_field :team %></td>
-  </tr>
-</table>
-<div class="actions">
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :player %><br />
+    <%= f.text_field :player %>
+  </div>
+  <div class="field">
+    <%= f.label :team %><br />
+    <%= f.text_field :team %>
+  </div>
+  <div class="actions">
     <%= f.submit %>
-</div>
+  </div>
 <% end %>

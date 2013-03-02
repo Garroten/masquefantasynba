@@ -1,70 +1,58 @@
+<h1>Listing fouls</h1>
+<%= link_to 'Toda la temporada', fouls_path %>
+<%= link_to "Día anterior", :controller => "fouls", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "fouls", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "fouls", :action => "tendaysbefore"%>
 
-    <nav id="menu_arriba">
-        <ul>
-            <li><%= link_to 'Toda la temporada', fouls_path %></li>
-            <li><%= link_to "Día anterior", :controller => "fouls", :action => "daybefore"%></li>
-            <li><%= link_to "Últimos 5 días", :controller => "fouls", :action => "fivedaysbefore"%></li>
-            <li><%= link_to "Últimos 10 días", :controller => "fouls", :action => "tendaysbefore"%></li>
-        </ul>
-    </nav>    
-</header>
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Partidos Jugados</th>
+    <th>Faltas personales</th>
+    <th>Faltas personales por partido</th>
+    <!--th>Id</th>
+    <th>Gp</th>
+    <th>Mpg</th>
+    <th>Pf</th>
+    <th>Pfpg</th>
+    <th>Pfp48m</th>
+    <th>Eject</th>
+    <th>Day</th>
+    <th>Month</th>
+    <th>Year</th>
+    <th>Season</th>
+    <th>Player</th>
+    <th></th>
+    <th></th>
+    <th></th-->
+  </tr>
 
-<section id="rojo">
-    <div class="transrojo">
-        <div class="fondotransBus">
+<% @fouls.each do |foul| %>
+  <tr>
+    <td><%= foul.player.player %></td>
+    <td><%= foul.GP %></td>
+    <td><%= foul.PF %></td>
+    <td><%= foul.PFPG %></td>
+    
+    <!--td><.%= foul.id %></td>
+    <td><.%= foul.GP %></td>
+    <td><.%= foul.MPG %></td>
+    <td><.%= foul.PF %></td>
+    <td><.%= foul.PFPG %></td>
+    <td><.%= foul.PFP48M %></td>
+    <td><.%= foul.eject %></td>
+    <td><.%= foul.day %></td>
+    <td><.%= foul.month %></td>
+    <td><.%= foul.year %></td>
+    <td><.%= foul.season %></td>
+    <td><.%= foul.player_id %></td>
+    <td><.%= link_to 'Show', foul %></td>
+    <td><.%= link_to 'Edit', edit_foul_path(foul) %></td>
+    <td><.%= link_to 'Destroy', foul, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td-->
+  </tr>
+<% end %>
+</table>
 
+<%= will_paginate @fouls %>
 
-        </div>   
-        <table>
-          <tr>
-            <th>Jugador</th>
-            <th>Partidos Jugados</th>
-            <th>Faltas personales</th>
-            <th>Faltas personales por partido</th>
-            <!--th>Id</th>
-            <th>Gp</th>
-            <th>Mpg</th>
-            <th>Pf</th>
-            <th>Pfpg</th>
-            <th>Pfp48m</th>
-            <th>Eject</th>
-            <th>Day</th>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Season</th>
-            <th>Player</th>
-            <th></th>
-            <th></th>
-            <th></th-->
-          </tr>
-
-        <% @fouls.each do |foul| %>
-          <tr>
-            <td><%= foul.player.player %></td>
-            <td><%= foul.GP %></td>
-            <td><%= foul.PF %></td>
-            <td><%= foul.PFPG %></td>
-            
-            <!--td><.%= foul.id %></td>
-            <td><.%= foul.GP %></td>
-            <td><.%= foul.MPG %></td>
-            <td><.%= foul.PF %></td>
-            <td><.%= foul.PFPG %></td>
-            <td><.%= foul.PFP48M %></td>
-            <td><.%= foul.eject %></td>
-            <td><.%= foul.day %></td>
-            <td><.%= foul.month %></td>
-            <td><.%= foul.year %></td>
-            <td><.%= foul.season %></td>
-            <td><.%= foul.player_id %></td>
-            <td><.%= link_to 'Show', foul %></td>
-            <td><.%= link_to 'Edit', edit_foul_path(foul) %></td>
-            <td><.%= link_to 'Destroy', foul, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td-->
-          </tr>
-        <% end %>
-        </table>
-
-        <%= will_paginate @fouls %>
-    </div>
-</section>
 <%#= link_to 'New Foul', new_foul_path %>

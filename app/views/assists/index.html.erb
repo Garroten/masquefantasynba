@@ -1,53 +1,42 @@
-  <nav id="menu_arriba">
-        <ul>
-            <li><%= link_to 'Toda la temporada', assists_path %></li>
-            <li><%= link_to "Día anterior", :controller => "assists", :action => "daybefore"%></li>
-            <li><%= link_to "Últimos 5 días", :controller => "assists", :action => "fivedaysbefore"%></li>
-            <li><%= link_to "Últimos 10 días", :controller => "assists", :action => "tendaysbefore"%></li>
-        </ul>
-    </nav>      
-</header>
+<h1>Listing assists</h1>
+<%= link_to 'Toda la temporada', assists_path %>
+<%= link_to "Día anterior", :controller => "assists", :action => "daybefore"%>
+<%= link_to "Últimos 5 días", :controller => "assists", :action => "fivedaysbefore"%>
+<%= link_to "Últimos 10 días", :controller => "assists", :action => "tendaysbefore"%>
 
-<section id="azul">
-    <div class="transazul">
-        <div class="fondotransBus">
+<table>
+  <tr>
+    <th>Jugador</th>
+    <th>Partidos Jugados</th>
+    <th>Asistencias</th>
+    <th>Asistencias por Partido</th>    
+  </tr>
 
-        </div>    
-        <table>
-          <tr>
-            <th>Jugador</th>
-            <th>Partidos Jugados</th>
-            <th>Asistencias</th>
-            <th>Asistencias por Partido</th>    
-          </tr>
-
-        <% @assists.each do |assist| %>
-          <tr>
-            <td><%= link_to  assist.player.player, assist.player %></td>
-            <td><%= assist.GP %></td>
-            <td><%= assist.AST %></td>
-            <td><%= assist.ASTPG %></td>
-            
-            <!--td><.%= assist.id %></td>
-            <td><.%= assist.GP %></td>
-            <td><.%= assist.MPG %></td>
-            <td><.%= assist.AST %></td>
-            <td><.%= assist.APG %></td>
-            <td><.%= assist.T_O %></td>
-            <td><.%= assist.TOPG %></td>
-            <td><.%= assist.AP48M %></td>
-            <td><.%= assist.AST_TO %></td>
-            <td><.%= assist.day %></td>
-            <td><.%= assist.month %></td>
-            <td><.%= assist.year %></td>
-            <td><.%= assist.season %></td>
-            <td><.%= link_to 'Show', assist %></td>
-            <td><.%= link_to 'Edit', edit_assist_path(assist) %></td>
-            <td><.%= link_to 'Destroy', assist, :method => :delete, :data => { :confirm => 'Are you sure?' } %--></td>
-          </tr>
-        <% end %>  
-        </table>
-        <%= will_paginate @assists %>
-        <!--%= link_to 'New Assist', new_assist_path %-->
-    </div>
-</section>
+<% @assists.each do |assist| %>
+  <tr>
+    <td><%= link_to  assist.player.player, assist.player %></td>
+    <td><%= assist.GP %></td>
+    <td><%= assist.AST %></td>
+    <td><%= assist.ASTPG %></td>
+    
+    <!--td><.%= assist.id %></td>
+    <td><.%= assist.GP %></td>
+    <td><.%= assist.MPG %></td>
+    <td><.%= assist.AST %></td>
+    <td><.%= assist.APG %></td>
+    <td><.%= assist.T_O %></td>
+    <td><.%= assist.TOPG %></td>
+    <td><.%= assist.AP48M %></td>
+    <td><.%= assist.AST_TO %></td>
+    <td><.%= assist.day %></td>
+    <td><.%= assist.month %></td>
+    <td><.%= assist.year %></td>
+    <td><.%= assist.season %></td>
+    <td><.%= link_to 'Show', assist %></td>
+    <td><.%= link_to 'Edit', edit_assist_path(assist) %></td>
+    <td><.%= link_to 'Destroy', assist, :method => :delete, :data => { :confirm => 'Are you sure?' } %--></td>
+  </tr>
+<% end %>  
+</table>
+<%= will_paginate @assists %>
+<!--%= link_to 'New Assist', new_assist_path %-->

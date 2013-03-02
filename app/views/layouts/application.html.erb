@@ -3,88 +3,32 @@
 <head>
   <title>+ Que Fantasy NBA</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <!--<%= stylesheet_link_tag    "styles", :media => "all" %>-->
-  
-  <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <section>
-         <%= link_to image_tag('logo.png'), root_path %> 
-        <h1>Consulta tus puntos <br>de la FANTASYNBA+ <br>y toda la estadistica NBA <br>en español</h1>
-    </section>
-    <div class="frondotransN">
-      <h2>LIDERES EN </h2>
-      <div class="sobre">
-        
-            
-         
-      </div>  
-    </div>
-
+  <%= link_to image_tag('logo.png'), root_path %> 
+  <p>
+    <%= link_to 'tapones', blocks_path %>
+    <%= link_to 'asistencias', assists_path %>
+    <%= link_to 'faltas personales', fouls_path %>
+    <%= link_to 'rebotes', rebounds_path %>
+    <%= link_to 'robos', steals_path %>
+    <%= link_to 'péridas de balon', turnovers_path %>
+    <%= link_to 'puntos', scores_path %>
+  </p>
 
 <%= yield %>
-
-<footer>
-  <aside>
-      <section>
-          <h2>Webs NBA</h2>
-          <ul>
-              <li><a href="http://www.nba.com/" target="_blank">NBA.com</a></li>
-              <li><a href="http://canalplus.es/nba/" target="_blank">Canal+ NBA</a></li>
-              <li><a href="http://espn.go.com/nba/" target="_blank">ESPN NBA</a></li>
-              <li><a href="http://hoopshype.com/" target="_blank">Hoopshype</a></li>
-              <li><a href="http://www.pickandroll.es/" target="_blank">PickAndRoll</a></li>
-          </ul>
-      </section>
-          
-      <section>
-          <h2>Blogs NBA</h2>
-          <ul>
-              <li><a href="http://blogs.canalplus.es/daimiel/" target="_blank">Anthoni Daimiel</a></li>
-              <li><a href="http://blogs.canalplus.es/leplusx/" target="_blank">Jose Ajero</a></li>
-              <li><a href="http://www.nbamaniacs.com/" target="_blank">NBA Maniacs</a></li>
-              <li><a href="http://www.basket4us.com/" target="_blank">Basket4us</a></li>
-              <li><a href="http://blog.tjnba.com/" target="_blank">TJNBA</a></li>
-          </ul>
-      </section>
-          
-      <section>
-          <h2>Twitter NBA</h2>
-          <div class="tweet">Getting tweets...</div>
-      </section>
-  </aside>
-  <section id="contacto">
-      <ul>
-          <li><a href="">Quienes Somos</a></li>
-          <li><a href="">Contacto</a></li>
-          <li><a href="">Texto Legal</a></li>
-      </ul>
-  </section>
-  <nav id="menu_abajo">
-    <ul>
-      <li><%= link_to 'portada', root_path %></li>
-      <li><%= link_to 'puntos', scores_path %></li>
-      <li><%= link_to 'asistencias', assists_path %></li>
-      <li><%= link_to 'rebotes', rebounds_path %></li>
-      <li><%= link_to 'robos', steals_path %></li>
-      <li><%= link_to 'tapones', blocks_path %></li>
-      <li><%= link_to 'faltas personales', fouls_path %></li>
-      <li><%= link_to 'péridas de balon', turnovers_path %></li>    
-    </ul>
-  </nav>
-
-
-
- 
-  <%= javascript_include_tag "application" %>
-  <!--<%= javascript_include_tag "jquery" %>
-  <%= javascript_include_tag "html5shiv" %>
-  <%= javascript_include_tag "html5shiv-printshiv" %>
-  <%= javascript_include_tag "jquery.tweet" %>
-  <%= javascript_include_tag "global" %>-->
-</footer>
+  
+  <p>
+    <%= link_to 'tapones', blocks_path %>
+    <%= link_to 'asistencias', assists_path %>
+    <%= link_to 'faltas personales', fouls_path %>
+    <%= link_to 'rebotes', rebounds_path %>
+    <%= link_to 'robos', steals_path %>
+    <%= link_to 'péridas de balon', turnovers_path %>
+    <%= link_to 'puntos', scores_path %>
+  </p>
 
 </body>
 </html>
