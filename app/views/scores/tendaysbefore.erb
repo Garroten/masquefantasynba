@@ -1,24 +1,35 @@
-<h1>Listing scores</h1>
-<%= link_to 'Toda la temporada', scores_path %>
-<%= link_to "Día anterior", :controller => "scores", :action => "daybefore"%>
-<%= link_to "Últimos 5 días", :controller => "scores", :action => "fivedaysbefore"%>
-<%= link_to "Últimos 10 días", :controller => "scores", :action => "tendaysbefore"%>
+  <nav id="menu_arriba">
+        <ul>
+            <li><%= link_to 'Toda la temporada', scores_path %></li>
+            <li><%= link_to "Día anterior", :controller => "scores", :action => "daybefore"%></li>
+            <li><%= link_to "Últimos 5 días", :controller => "scores", :action => "fivedaysbefore"%></li>
+            <li><%= link_to "Últimos 10 días", :controller => "scores", :action => "tendaysbefore"%></li>
+        </ul>
+    </nav>      
+</header>
 
-<table>
-  <tr>
-    <th>Jugador</th>
-    <th>Partidos Jugados</th>
-    <th>Puntos</th>
-    <th>Puntos por partido</th>    
-  </tr>
+<section id="azul">
+  <div class="transazul">
+    <div class="fondotransBus">
 
-<% @scores.each do |score| %>
-  <tr>
-    <td><%= score.player.player %></td>
-    <td><%= score.GP %></td>
-    <td><%= score.PTS %></td>
-    <td><%= score.PTPG %></td>        
-  </tr>
-<% end %>
-</table>
-<%= will_paginate @scores %>
+    </div>  
+    <table>
+      <tr>
+        <th>Jugador</th>
+        <th>Partidos Jugados</th>
+        <th>Puntos</th>
+        <th>Puntos por partido</th>    
+      </tr>
+
+    <% @scores.each do |score| %>
+      <tr>
+        <td><%= score.player.player %></td>
+        <td><%= score.GP %></td>
+        <td><%= score.PTS %></td>
+        <td><%= score.PTPG %></td>        
+      </tr>
+    <% end %>
+    </table>
+    <%= will_paginate @scores %>
+  </div>
+</section>

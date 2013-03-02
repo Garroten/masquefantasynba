@@ -1,20 +1,28 @@
-<p id="notice"><%= notice %></p>
+</header>
 
-<p>
-  <b>Id:</b>
-  <%= @player.id %>
-</p>
+<section id="azul">
+  	<div class="transazul">
+		<table>
+			<tr>
+				<%= notice %>
+			</tr>
+			<tr>
+				<td>Id:</td>
+				<td><%= @player.id %></td>
+			</tr>
+			<tr>
+				<td>Player:</td>
+				<td><%= @player.player %></td>
+			</tr>
+			<tr>
+				<td>Team:</td>
+				<td><%= @player.team %></td>
+			</tr>
 
-<p>
-  <b>Player:</b>
-  <%= @player.player %>
-</p>
-
-<p>
-  <b>Team:</b>
-  <%= @player.team %>
-</p>
-
-
-<%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', players_path %>
+		</table>
+		<div class="edit">	
+			<%= link_to 'Edit', edit_player_path(@player) %>
+			<%= link_to 'Back', players_path %>
+		</div>
+	</div>
+</section>

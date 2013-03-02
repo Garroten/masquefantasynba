@@ -1,24 +1,36 @@
-<h1>Listing blocks</h1>
-<%= link_to 'Toda la temporada', blocks_path %>
-<%= link_to "Día anterior", :controller => "blocks", :action => "daybefore"%>
-<%= link_to "Últimos 5 días", :controller => "blocks", :action => "fivedaysbefore"%>
-<%= link_to "Últimos 10 días", :controller => "blocks", :action => "tendaysbefore"%>
+<nav id="menu_arriba">
+        <ul>
+          <li><%= link_to 'Toda la temporada', blocks_path %></li>
+          <li><%= link_to "Día anterior", :controller => "blocks", :action => "daybefore"%></li>
+          <li><%= link_to "Últimos 5 días", :controller => "blocks", :action => "fivedaysbefore"%></li>
+          <li><%= link_to "Últimos 10 días", :controller => "blocks", :action => "tendaysbefore"%></li>
+      </ul>
+    </nav>    
+</header>
 
-<table>
-  <tr>
-    <th>Jugador</th>
-    <th>Partidos Jugados</th>
-    <th>Tapones</th>
-    <th>Tapones por Partido</th>
-  </tr>
+<section id="azul">
+  <div class="transazul">
+    <div class="fondotransBus">
 
-<% @blocks.each do |block| %>
-  <tr>
-    <td><%= link_to  block.player.player, block.player %></td>
-    <td><%= block.GP %></td>
-    <td><%= block.BLK %></td>
-    <td><%= block.BLKPG %></td>    
-  </tr>
-<% end %>
-</table>
-<%= will_paginate @blocks %>
+
+    </div>    
+    <table>
+      <tr>
+        <th>Jugador</th>
+        <th>Partidos Jugados</th>
+        <th>Tapones</th>
+        <th>Tapones por Partido</th>
+      </tr>
+
+    <% @blocks.each do |block| %>
+      <tr>
+        <td><%= link_to  block.player.player, block.player %></td>
+        <td><%= block.GP %></td>
+        <td><%= block.BLK %></td>
+        <td><%= block.BLKPG %></td>    
+      </tr>
+    <% end %>
+    </table>
+    <%= will_paginate @blocks %>
+  </div>
+</section>
