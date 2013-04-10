@@ -16,41 +16,23 @@
 
         </div>    
         <table>
-            <tr>
-                <th>Jugador</th>
-                <th>Partidos Jugados</th>
-                <th>Tapones</th>
-                <th>Tapones por Partido</th>
-            </tr>
+          <tr>
+            <th>Jugador</th>
+            <th>Partios Jugados</th>
+            <th>Puntos Fantasy</th>
+            <th></th>
+            <th></th>
+          </tr>
 
-            <% @blocks.each do |block| %>
-            <tr>
-                <td><%= link_to  block.player.player, block.player %></td>
-                <td><%= block.GP %></td>
-                <td><%= block.BLK %></td>
-                <td><%= block.BLKPG %></td>
-                
-                
-                <!--td><.%= block.id %></td>
-                <td><.%= block.GP %></td>
-                <td><.%= block.MPG %></td>
-                <td><.%= block.BLK %></td>
-                <td><.%= block.PF %></td>
-                <td><.%= block.BLKPG %></td>
-                <td><.%= block.BLKP48M %></td>
-                <td><.%= block.BLK_PF %></td>
-                <td><.%= block.day %></td>
-                <td><.%= block.month %></td>
-                <td><.%= block.year %></td>
-                <td><.%= block.season %></td-->
-                
-                <!--td><.%= link_to 'Show', block %></td>
-                <td><.%= link_to 'Edit', edit_block_path(block) %></td>
-                <td><.%= link_to 'Destroy', block, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td-->
+          <% @players.each do |player| %>
+            <tr>        
+              <td><%= player.player %></td>
+              <td><%= player.fantasy.gp %></td>
+              <td><%= player.fantasy.blk %></td>
             </tr>
-            <% end %>
+          <% end %>
         </table>
-        <%= will_paginate @blocks %>
+        <%= will_paginate @players %>
     </div>
 </section>
 

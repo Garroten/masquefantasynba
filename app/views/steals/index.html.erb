@@ -1,6 +1,6 @@
 <nav id="menu_arriba">
         <ul>
-            <li><%= link_to 'Toda la temporada', fouls_path %></li>
+            <li><%= link_to 'Toda la temporada', steals_path %></li>
             <li><%= link_to "Día anterior", :controller => "steals", :action => "daybefore"%></li>
             <li><%= link_to "Últimos 5 días", :controller => "steals", :action => "fivedaysbefore"%></li>
             <li><%= link_to "Últimos 10 días", :controller => "steals", :action => "tendaysbefore"%></li>
@@ -13,66 +13,25 @@
         <div class="fondotransBus">
 
         </div>
-    <table>
-      <tr>
-        <th>Jugador</th>
-        <th>Partidos Jugados</th>
-        <th>Robos</th>
-        <th>Robos por partido</th>
-        
-        <%#*<th>Id</th>%>
-        <%#*<th>Gp</th>%>
-        <%#*<th>Mpg</th>%>
-        <%#*<th>Stl</th>%>
-        <%#*<th>Stpg</th>%>
-        <%#*<th>Stp48m</th>%>
-        <%#*<th>T o</th>%>
-        <%#*<th>Topg</th>%>
-        <%#*<th>Pf</th>%>
-        <%#*<th>St to</th>%>
-        <%#*<th>St tf</th>%>
-        <%#*<th>Day</th>%>
-        <%#*<th>Month</th>%>
-        <%#*<th>Year</th>%>
-        <%#*<th>Season</th>%>
-        <%#*<th>Player</th>%>
-        <%#*<th></th>%>
-        <%#*<th></th>%>
-        <%#*<th></th>%>
-      </tr>
+        <table>
+          <tr>
+            <th>Jugador</th>
+            <th>Partios Jugados</th>
+            <th>Puntos Fantasy</th>
+            <th></th>
+            <th></th>
+          </tr>
 
-    <% @steals.each do |steal| %>
-      <tr>
-        <td><%= steal.player.player %></td>
-        <td><%= steal.GP %></td>
-        <td><%= steal.STL %></td>
-        <td><%= steal.STPG %></td>
-        
-        <%#*<td><%= steal.id %.></td>%>
-        <%#*<td><%= steal.GP %.></td>%>
-        <%#*<td><%= steal.MPG %.></td>%>
-        <%#*<td><%= steal.STL %.></td>%>
-        <%#*<td><%= steal.STPG %.></td>%>
-        <%#*<td><%= steal.STP48M %.></td>%>
-        <%#*<td><%= steal.T_O %.></td>%>
-        <%#*<td><%= steal.TOPG %.></td>%>
-        <%#*<td><%= steal.PF %.></td>%>
-        <%#*<td><%= steal.ST_TO %.></td>%>
-        <%#*<td><%= steal.ST_TF %.></td>%>
-        <%#*<td><%= steal.day %.></td>%>
-        <%#*<td><%= steal.month %.></td>%>
-        <%#*<td><%= steal.year %.></td>%>
-        <%#*<td><%= steal.season %.></td>%>
-        <%#*<td><%= steal.player_id %.></td>%>
-        <%#*<td><%= link_to 'Show', steal %.></td>%>
-        <%#*<td><%= link_to 'Edit', edit_steal_path(steal) %.></td>%>
-        <%#*<td><%= link_to 'Destroy', steal, :method => :delete, :data => { :confirm => 'Are you sure?' } %.></td>%>
-      </tr>
-    <% end %>
-    </table>
+          <% @players.each do |player| %>
+            <tr>        
+              <td><%= player.player %></td>
+              <td><%= player.fantasy.gp %></td>
+              <td><%= player.fantasy.stl %></td>
+            </tr>
+          <% end %>
+        </table>
+        <%= will_paginate @players %>
 
-    <%= will_paginate @steals %>
-
-    <%#= link_to 'New Steal', new_steal_path %>
+        <%#= link_to 'New Steal', new_steal_path %>
     </div>
 </section>

@@ -1,46 +1,135 @@
 require 'will_paginate/array'
 class StealsController < ApplicationController
+  before_filter :get_leaders
   # GET /steals
   # GET /steals.json
   def index
-    @steals = Steal.all_season.paginate(:page => params[:page], :per_page => 10)  
-
+    #@steals = Steal.all_season.paginate(:page => params[:page], :per_page => 10)  
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      stl = Steal.stl_season_by_player(p.id)[0].STL
+      if stl.nil?        
+        next
+      else  
+        fantasy.stl = (-2 * stl)
+      end
+      gp = Score.gp_season_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @steals }
+      format.json { render :json => @players }
     end
   end
 
   # GET /steals/daybefore
   # GET /steals/daybefore.json
   def daybefore
-    @steals = Steal.day_before.paginate(:page => params[:page], :per_page => 10)      
-
+    #@steals = Steal.day_before.paginate(:page => params[:page], :per_page => 10)      
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      stl = Steal.stl_day_before_by_player(p.id)[0].STL
+      if stl.nil?        
+        next
+      else  
+        fantasy.stl = (-2 * stl)
+      end
+      gp = Score.gp_day_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @steals }
+      format.json { render :json => @players }
     end
   end
   
   # GET /steals/fivedaysbefore
   # GET /steals/fivedaysbefore.json
   def fivedaysbefore
-    @steals = Steal.five_days_before.paginate(:page => params[:page], :per_page => 10)  
-
+    #@steals = Steal.five_days_before.paginate(:page => params[:page], :per_page => 10)  
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      stl = Steal.stl_five_days_before_by_player(p.id)[0].STL
+      if stl.nil?        
+        next
+      else  
+        fantasy.stl = (-2 * stl)
+      end
+      gp = Score.gp_five_days_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @steals }
+      format.json { render :json => @players }
     end
   end
   
   # GET /steals/tendaysbefore
   # GET /steals/tendaysbefore.json
   def tendaysbefore
-    @steals = Steal.ten_days_before.paginate(:page => params[:page], :per_page => 10)  
-
+    #@steals = Steal.ten_days_before.paginate(:page => params[:page], :per_page => 10)  
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      stl = Steal.stl_ten_days_before_by_player(p.id)[0].STL
+      if stl.nil?        
+        next
+      else  
+        fantasy.stl = (-2 * stl)
+      end
+      gp = Score.gp_ten_days_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @steals }
+      format.json { render :json => @players }
     end
   end
   
@@ -113,5 +202,32 @@ class StealsController < ApplicationController
       format.html { redirect_to steals_url }
       format.json { head :no_content }
     end
+  end
+  
+  def get_leaders
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      stl = Steal.stl_season_by_player(p.id)[0].STL
+      if stl.nil?        
+        next
+      else  
+        fantasy.stl = (-2 * stl)
+      end
+      gp = Score.gp_season_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      fantasy.rank = fantasy.stl / fantasy.gp
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players.sort! { |a,b| a.fantasy.rank <=> b.fantasy.rank }    
+    @playerss = @players.drop(@players.length - 5)
   end
 end

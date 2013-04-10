@@ -18,53 +18,21 @@
         <table>
           <tr>
             <th>Jugador</th>
-            <th>Partidos Jugados</th>
-            <th>Faltas personales</th>
-            <th>Faltas personales por partido</th>
-            <!--th>Id</th>
-            <th>Gp</th>
-            <th>Mpg</th>
-            <th>Pf</th>
-            <th>Pfpg</th>
-            <th>Pfp48m</th>
-            <th>Eject</th>
-            <th>Day</th>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Season</th>
-            <th>Player</th>
+            <th>Partios Jugados</th>
+            <th>Puntos Fantasy</th>
             <th></th>
             <th></th>
-            <th></th-->
           </tr>
 
-        <% @fouls.each do |foul| %>
-          <tr>
-            <td><%= foul.player.player %></td>
-            <td><%= foul.GP %></td>
-            <td><%= foul.PF %></td>
-            <td><%= foul.PFPG %></td>
-            
-            <!--td><.%= foul.id %></td>
-            <td><.%= foul.GP %></td>
-            <td><.%= foul.MPG %></td>
-            <td><.%= foul.PF %></td>
-            <td><.%= foul.PFPG %></td>
-            <td><.%= foul.PFP48M %></td>
-            <td><.%= foul.eject %></td>
-            <td><.%= foul.day %></td>
-            <td><.%= foul.month %></td>
-            <td><.%= foul.year %></td>
-            <td><.%= foul.season %></td>
-            <td><.%= foul.player_id %></td>
-            <td><.%= link_to 'Show', foul %></td>
-            <td><.%= link_to 'Edit', edit_foul_path(foul) %></td>
-            <td><.%= link_to 'Destroy', foul, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td-->
-          </tr>
-        <% end %>
+          <% @players.each do |player| %>
+            <tr>        
+              <td><%= player.player %></td>
+              <td><%= player.fantasy.gp %></td>
+              <td><%= player.fantasy.pf %></td>
+            </tr>
+          <% end %>
         </table>
-
-        <%= will_paginate @fouls %>
+        <%= will_paginate @players %>
     </div>
 </section>
 <%#= link_to 'New Foul', new_foul_path %>

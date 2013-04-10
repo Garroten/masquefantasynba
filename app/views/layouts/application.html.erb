@@ -17,9 +17,10 @@
     <div class="frondotransN">
       <h2>LIDERES EN </h2>
       <div class="sobre">
-        
-            
-         
+        <% @playerss.each do |player| %>
+          <%= player.player %>
+          <%= player.fantasy.rank %> <br/>       
+        <% end %>                     
       </div>  
     </div>
 
@@ -71,7 +72,10 @@
       <li><%= link_to 'robos', steals_path %></li>
       <li><%= link_to 'tapones', blocks_path %></li>
       <li><%= link_to 'faltas personales', fouls_path %></li>
-      <li><%= link_to 'péridas de balon', turnovers_path %></li>    
+      <li><%= link_to 'faltas técnicas', technicals_path %></li>
+      <li><%= link_to 'péridas de balon', turnovers_path %></li>   
+      <li><%= link_to 'tiros fallados', throws_path %></li>  
+      <li><%= link_to 'fantasy', fantasy_path %></li>
     </ul>
   </nav>
 

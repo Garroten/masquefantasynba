@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  DIV: MyString
+  P: MyString
+  GP: 1
+  GS: 1
+  PF: 1
+  TF: 1
+  FF: 1
+  DQ: 1
+  day: 1
+  month: 1
+  year: 1
+  season: MyString
+  player_id: MyString
+
+two:
+  id: 1
+  DIV: MyString
+  P: MyString
+  GP: 1
+  GS: 1
+  PF: 1
+  TF: 1
+  FF: 1
+  DQ: 1
+  day: 1
+  month: 1
+  year: 1
+  season: MyString
+  player_id: MyString

@@ -15,62 +15,24 @@
 
 
         </div>  
-    <table>
-      <tr>
-        <th>Jugador</th>
-        <th>Partidos Jugados</th>
-        <th>Rebotes</th>
-        <th>Rebotes por partido</th>
-        
-        <%#*<th>Id</th>%>
-        <%#*<th>Gp</th>%>
-        <%#*<th>Mpg</th>%>
-        <%#*<th>Off</th>%>
-        <%#*<th>Orpg</th>%>
-        <%#*<th>Def</th>%>
-        <%#*<th>Drpg</th>%>
-        <%#*<th>Reb</th>%>
-        <%#*<th>Rpg</th>%>
-        <%#*<th>Rp40</th>%>
-        <%#*<th>Day</th>%>
-        <%#*<th>Month</th>%>
-        <%#*<th>Year</th>%>
-        <%#*<th>Season</th>%>
-        <%#*<th>Player</th>%>
-        <%#*<th></th>%>
-        <%#*<th></th>%>
-        <%#*<th></th>%>
-      </tr>
+        <table>
+          <tr>
+            <th>Jugador</th>
+            <th>Partios Jugados</th>
+            <th>Puntos Fantasy</th>
+            <th></th>
+            <th></th>
+          </tr>
 
-    <% @rebounds.each do |rebound| %>
-      <tr>
-        <td><%= rebound.player.player %></td>
-        <td><%= rebound.GP %></td>
-        <td><%= rebound.REB %></td>
-        <td><%= rebound.RPG %></td>
-        
-        <%#*<td><%= rebound.id %.></td>%>
-        <%#*<td><%= rebound.GP %.></td>%>
-        <%#*<td><%= rebound.MPG %.></td>%>
-        <%#*<td><%= rebound.OFF %.></td>%>
-        <%#*<td><%= rebound.ORPG %.></td>%>
-        <%#*<td><%= rebound.DEF %.></td>%>
-        <%#*<td><%= rebound.DRPG %.></td>%>
-        <%#*<td><%= rebound.REB %.></td>%>
-        <%#*<td><%= rebound.RPG %.></td>%>
-        <%#*<td><%= rebound.RP40 %.></td>%>
-        <%#*<td><%= rebound.day %.></td>%>
-        <%#*<td><%= rebound.month %.></td>%>
-        <%#*<td><%= rebound.year %.></td>%>
-        <%#*<td><%= rebound.season %.></td>%>
-        <%#*<td><%= rebound.player_id %.></td>%>
-        <%#*<td><%= link_to 'Show', rebound %.></td>%>
-        <%#*<td><%= link_to 'Edit', edit_rebound_path(rebound) %.></td>%>
-        <%#*<td><%= link_to 'Destroy', rebound, :method => :delete, :data => { :confirm => 'Are you sure?' } %.></td>%>
-      </tr>
-    <% end %>
-    </table>
-    <%= will_paginate @rebounds %>
- </div>
+          <% @players.each do |player| %>
+            <tr>        
+              <td><%= player.player %></td>
+              <td><%= player.fantasy.gp %></td>
+              <td><%= player.fantasy.reb %></td>
+            </tr>
+          <% end %>
+        </table>
+        <%= will_paginate @players %>
+     </div>
 </section>
 <%#= link_to 'New Rebound', new_rebound_path %>

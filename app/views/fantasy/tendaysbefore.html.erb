@@ -1,0 +1,36 @@
+    <nav id="menu_arriba">
+        <ul>
+            <li><%= link_to 'Toda la temporada', fantasy_path %></li>
+            <li><%= link_to "Día anterior", :controller => "fantasy", :action => "daybefore"%></li>
+            <li><%= link_to "Últimos 5 días", :controller => "fantasy", :action => "fivedaysbefore"%></li>
+            <li><%= link_to "Últimos 10 días", :controller => "fantasy", :action => "tendaysbefore"%></li>
+        </ul>
+    </nav>    
+</header>
+
+<section id="rojo">
+  <div class="transrojo">
+    <div class="fondotransBus">
+
+
+    </div>     
+    <table>
+      <tr>
+        <th>Jugador</th>
+        <th>Partios Jugados</th>
+        <th>Puntos Fantasy</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @players.each do |player| %>
+        <tr>        
+          <td><%= player.player %></td>
+          <td><%= player.fantasy.gp %></td>
+          <td><%= player.fantasy.total %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @players %>
+  </div>
+</section>

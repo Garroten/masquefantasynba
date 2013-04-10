@@ -18,18 +18,20 @@
         <table>
           <tr>
             <th>Jugador</th>
-            <th>Rebotes</th>
-            <th>Rebotes por partido</th>
+            <th>Partios Jugados</th>
+            <th>Puntos Fantasy</th>
+            <th></th>
+            <th></th>
           </tr>
 
-        <% @rebounds.each do |rebound| %>
-          <tr>
-            <td><%= rebound.player.player %></td>
-            <td><%= rebound.REB %></td>
-            <td><%= rebound.RPG %></td>
-          </tr>
-        <% end %>
+          <% @players.each do |player| %>
+            <tr>        
+              <td><%= player.player %></td>
+              <td><%= player.fantasy.gp %></td>
+              <td><%= player.fantasy.reb %></td>
+            </tr>
+          <% end %>
         </table>
-        <%= will_paginate @rebounds %>
+        <%= will_paginate @players %>
   </div>
 </section>

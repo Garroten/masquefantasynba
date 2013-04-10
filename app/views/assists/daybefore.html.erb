@@ -18,19 +18,20 @@
       <table>
         <tr>
           <th>Jugador</th>
-          <th>Asistencias</th>
-          <th>Asistencias por Partido</th>    
+          <th>Partios Jugados</th>
+          <th>Puntos Fantasy</th>
+          <th></th>
+          <th></th>
         </tr>
 
-      <% @assists.each do |assist| %>
-        <tr>
-          <td><%= link_to  assist.player.player, assist.player %></td>
-          <td><%= assist.AST %></td>
-          <td><%= assist.APG %></td>
-        </tr>
-      <% end %>
+        <% @players.each do |player| %>
+          <tr>        
+            <td><%= player.player %></td>
+            <td><%= player.fantasy.gp %></td>
+            <td><%= player.fantasy.ast %></td>
+          </tr>
+        <% end %>
       </table>
-
-      <%= will_paginate @assists %>
+      <%= will_paginate @players %>
   </div>
 </section>

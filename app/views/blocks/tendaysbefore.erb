@@ -17,20 +17,20 @@
     <table>
       <tr>
         <th>Jugador</th>
-        <th>Partidos Jugados</th>
-        <th>Tapones</th>
-        <th>Tapones por Partido</th>
+        <th>Partios Jugados</th>
+        <th>Puntos Fantasy</th>
+        <th></th>
+        <th></th>
       </tr>
 
-      <% @blocks.each do |block| %>
-      <tr>
-        <td><%= link_to  block.player.player, block.player %></td>
-        <td><%= block.GP %></td>
-        <td><%= block.BLK %></td>
-        <td><%= block.BLKPG %></td>    
-      </tr>
+      <% @players.each do |player| %>
+        <tr>        
+          <td><%= player.player %></td>
+          <td><%= player.fantasy.gp %></td>
+          <td><%= player.fantasy.blk %></td>
+        </tr>
       <% end %>
     </table>
-    <%= will_paginate @blocks %>
+    <%= will_paginate @players %>
   </div>
 </section>

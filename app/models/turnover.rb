@@ -16,5 +16,21 @@ class Turnover < ActiveRecord::Base
   
   def self.ten_days_before
     Turnover.find_by_sql("SELECT player_id, SUM(GP) AS GP, SUM(T_O) AS T_O, SUM(T_O)/SUM(GP) AS TOPG FROM turnovers WHERE day > DAY(NOW())-10 AND month = MONTH(NOW()) AND year = YEAR(NOW()) GROUP BY player_id")
+  end
+  
+  def self.to_season_by_player(player_id)
+    Turnover.find_by_sql("SELECT SUM(T_O) AS T_O FROM turnovers WHERE player_id = " + player_id.to_s)
   end 
+  
+  def self.to_day_before_by_player(player_id)
+    Turnover.find_by_sql("SELECT SUM(T_O) AS T_O FROM turnovers WHERE day = DAY(NOW())-1 AND month = MONTH(NOW()) AND year = YEAR(NOW()) AND player_id = " + player_id.to_s)
+  end
+  
+  def self.to_five_days_before_by_player(player_id)
+    Turnover.find_by_sql("SELECT SUM(T_O) AS T_O FROM turnovers WHERE day > DAY(NOW())-5 AND month = MONTH(NOW()) AND year = YEAR(NOW()) AND player_id = " + player_id.to_s)
+  end
+  
+  def self.to_ten_days_before_by_player(player_id)
+    Turnover.find_by_sql("SELECT SUM(T_O) AS T_O FROM turnovers WHERE day > DAY(NOW())-10 AND month = MONTH(NOW()) AND year = YEAR(NOW()) AND player_id = " + player_id.to_s)
+  end
 end

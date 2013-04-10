@@ -16,38 +16,20 @@
         <table>
           <tr>
             <th>Jugador</th>
-            <th>Partidos Jugados</th>
-            <th>Asistencias</th>
-            <th>Asistencias por Partido</th>    
+            <th>Partios Jugados</th>
+            <th>Puntos Fantasy</th>
+            <th></th>
+            <th></th>
           </tr>
 
-        <% @assists.each do |assist| %>
-          <tr>
-            <td><%= link_to  assist.player.player, assist.player %></td>
-            <td><%= assist.GP %></td>
-            <td><%= assist.AST %></td>
-            <td><%= assist.ASTPG %></td>
-            
-            <!--td><.%= assist.id %></td>
-            <td><.%= assist.GP %></td>
-            <td><.%= assist.MPG %></td>
-            <td><.%= assist.AST %></td>
-            <td><.%= assist.APG %></td>
-            <td><.%= assist.T_O %></td>
-            <td><.%= assist.TOPG %></td>
-            <td><.%= assist.AP48M %></td>
-            <td><.%= assist.AST_TO %></td>
-            <td><.%= assist.day %></td>
-            <td><.%= assist.month %></td>
-            <td><.%= assist.year %></td>
-            <td><.%= assist.season %></td>
-            <td><.%= link_to 'Show', assist %></td>
-            <td><.%= link_to 'Edit', edit_assist_path(assist) %></td>
-            <td><.%= link_to 'Destroy', assist, :method => :delete, :data => { :confirm => 'Are you sure?' } %--></td>
-          </tr>
-        <% end %>  
+          <% @players.each do |player| %>
+            <tr>        
+              <td><%= player.player %></td>
+              <td><%= player.fantasy.gp %></td>
+              <td><%= player.fantasy.ast %></td>
+            </tr>
+          <% end %>
         </table>
-        <%= will_paginate @assists %>
-        <!--%= link_to 'New Assist', new_assist_path %-->
+        <%= will_paginate @players %>
     </div>
 </section>

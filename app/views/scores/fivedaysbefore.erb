@@ -14,22 +14,22 @@
 
       </div>
       <table>
-        <tr>
-          <th>Jugador</th>
-          <th>Partidos Jugados</th>
-          <th>Puntos</th>
-          <th>Puntos por partido</th>    
-        </tr>
+      <tr>
+        <th>Jugador</th>
+        <th>Partios Jugados</th>
+        <th>Puntos Fantasy</th>
+        <th></th>
+        <th></th>
+      </tr>
 
-      <% @scores.each do |score| %>
-        <tr>
-          <td><%= score.player.player %></td>
-          <td><%= score.GP %></td>
-          <td><%= score.PTS %></td>
-          <td><%= score.PTPG %></td>        
+      <% @players.each do |player| %>
+        <tr>        
+          <td><%= player.player %></td>
+          <td><%= player.fantasy.gp %></td>
+          <td><%= player.fantasy.total %></td>
         </tr>
       <% end %>
-      </table>
-      <%= will_paginate @scores %>
+    </table>
+    <%= will_paginate @players %>
   </div>
 </section>

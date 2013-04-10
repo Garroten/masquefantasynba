@@ -1,0 +1,73 @@
+<%= form_for(@technical) do |f| %>
+  <% if @technical.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@technical.errors.count, "error") %> prohibited this technical from being saved:</h2>
+
+      <ul>
+      <% @technical.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :DIV %><br />
+    <%= f.text_field :DIV %>
+  </div>
+  <div class="field">
+    <%= f.label :P %><br />
+    <%= f.text_field :P %>
+  </div>
+  <div class="field">
+    <%= f.label :GP %><br />
+    <%= f.number_field :GP %>
+  </div>
+  <div class="field">
+    <%= f.label :GS %><br />
+    <%= f.number_field :GS %>
+  </div>
+  <div class="field">
+    <%= f.label :PF %><br />
+    <%= f.number_field :PF %>
+  </div>
+  <div class="field">
+    <%= f.label :TF %><br />
+    <%= f.number_field :TF %>
+  </div>
+  <div class="field">
+    <%= f.label :FF %><br />
+    <%= f.number_field :FF %>
+  </div>
+  <div class="field">
+    <%= f.label :DQ %><br />
+    <%= f.number_field :DQ %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br />
+    <%= f.number_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br />
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :season %><br />
+    <%= f.text_field :season %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

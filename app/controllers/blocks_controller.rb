@@ -1,43 +1,132 @@
 require 'will_paginate/array'
 class BlocksController < ApplicationController
+  before_filter :get_leaders
   # GET /blocks
   # GET /blocks.json
   def index
-    @blocks = Block.all_season.paginate(:page => params[:page], :per_page => 10)  
-
+    #@blocks = Block.all_season.paginate(:page => params[:page], :per_page => 10)  
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      blk = Block.blk_season_by_player(p.id)[0].BLK
+      if blk.nil?        
+        next
+      else  
+        fantasy.blk = (blk * 2)
+      end
+      gp = Score.gp_season_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @blocks }
+      format.json { render :json => @players }
     end
   end
   
   # GET /blocks/daybefore
   def daybefore
-    @blocks = Block.day_before.paginate(:page => params[:page], :per_page => 10)      
-
+    #@blocks = Block.day_before.paginate(:page => params[:page], :per_page => 10)      
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      blk = Block.blk_day_before_by_player(p.id)[0].BLK
+      if blk.nil?        
+        next
+      else  
+        fantasy.blk = (blk * 2)
+      end
+      gp = Score.gp_day_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @blocks }
+      format.json { render :json => @players }
     end
   end
   
   # GET /blocks/fivedaysbefore
   def fivedaysbefore
-    @blocks = Block.five_days_before.paginate(:page => params[:page], :per_page => 10)  
-
+    #@blocks = Block.five_days_before.paginate(:page => params[:page], :per_page => 10)  
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      blk = Block.blk_five_days_before_by_player(p.id)[0].BLK
+      if blk.nil?        
+        next
+      else  
+        fantasy.blk = (blk * 2)
+      end
+      gp = Score.gp_five_days_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @blocks }
+      format.json { render :json => @players }
     end
   end
   
   # GET /blocks/tendaysbefore
   def tendaysbefore
-    @blocks = Block.ten_days_before.paginate(:page => params[:page], :per_page => 10)  
-
+    #@blocks = Block.ten_days_before.paginate(:page => params[:page], :per_page => 10)  
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      blk = Block.blk_ten_days_before_by_player(p.id)[0].BLK
+      if blk.nil?        
+        next
+      else  
+        fantasy.blk = (blk * 2)
+      end
+      gp = Score.gp_ten_days_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @blocks }
+      format.json { render :json => @players }
     end
   end
 
@@ -110,5 +199,34 @@ class BlocksController < ApplicationController
       format.html { redirect_to blocks_url }
       format.json { head :no_content }
     end
+  end
+  
+  def get_leaders
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      blk = Block.blk_season_by_player(p.id)[0].BLK
+      if blk.nil?        
+        next
+      else  
+        fantasy.blk = (blk * 2)
+      end
+      gp = Score.gp_season_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      fantasy.rank = fantasy.blk / fantasy.gp
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players.sort! { |a,b| a.fantasy.rank <=> b.fantasy.rank }    
+    @playerss = @players.drop(@players.length - 5)
   end
 end

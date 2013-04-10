@@ -1,43 +1,134 @@
 require 'will_paginate/array'
 class AssistsController < ApplicationController
+  before_filter :get_leaders
+  
   # GET /assists
   # GET /assists.json
   def index
-    @assists = Assist.all_season.paginate(:page => params[:page], :per_page => 10) 
+    #@assists = Assist.all_season.paginate(:page => params[:page], :per_page => 10) 
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      ast = Assist.ast_season_by_player(p.id)[0].AST
+      if ast.nil?         
+        next
+      else 
+        fantasy.ast = ast
+      end  
+      gp = Score.gp_season_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @assists }
+      format.json { render :json => @players }
     end
   end
 
   # GET /assists/daybefore
   def daybefore
-    @assists = Assist.day_before.paginate(:page => params[:page], :per_page => 10)     
-
+    #@assists = Assist.day_before.paginate(:page => params[:page], :per_page => 10)     
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      ast = Assist.ast_day_before_by_player(p.id)[0].AST
+      if ast.nil?         
+        next
+      else 
+        fantasy.ast = ast
+      end  
+      gp = Score.gp_day_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @blocks }
+      format.json { render :json => @players }
     end
   end
   
   # GET /assists/fivedaysbefore
   def fivedaysbefore
-    @assists = Assist.five_days_before.paginate(:page => params[:page], :per_page => 10)  
-
+    #@assists = Assist.five_days_before.paginate(:page => params[:page], :per_page => 10)  
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      ast = Assist.ast_five_days_before_by_player(p.id)[0].AST
+      if ast.nil?         
+        next
+      else 
+        fantasy.ast = ast
+      end  
+      gp = Score.gp_five_days_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10)  
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @blocks }
+      format.json { render :json => @players }
     end
   end
   
   # GET /assists/tendaysbefore
   def tendaysbefore
-    @assists = Assist.ten_days_before.paginate(:page => params[:page], :per_page => 10)  
-
+    #@assists = Assist.ten_days_before.paginate(:page => params[:page], :per_page => 10)  
+    @players_found = Player.all  
+    @players = Array.new
+    @players_found.each { |p|  
+      fantasy = Fantasy.new
+      ast = Assist.ast_ten_days_before_by_player(p.id)[0].AST
+      if ast.nil?         
+        next
+      else 
+        fantasy.ast = ast
+      end  
+      gp = Score.gp_ten_days_before_by_player(p.id)[0].GP
+      
+      if gp.nil?        
+        next
+      else  
+        fantasy.gp = gp
+      end
+      
+      p.fantasy = fantasy 
+      @players.push(p)     
+    }    
+    
+    @players = @players.paginate(:page => params[:page], :per_page => 10) 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @blocks }
+      format.json { render :json => @players }
     end
   end
   
@@ -110,5 +201,10 @@ class AssistsController < ApplicationController
       format.html { redirect_to assists_url }
       format.json { head :no_content }
     end
+  end
+  
+  def get_leaders
+    fantasy_service = FantasyService.new
+    @playerss = fantasy_service.assists_leaders         
   end
 end

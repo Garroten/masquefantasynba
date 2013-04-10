@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224190842) do
+ActiveRecord::Schema.define(:version => 20130303135338) do
 
   create_table "assists", :force => true do |t|
     t.integer  "GP"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130224190842) do
     t.string   "team"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "rookie"
   end
 
   create_table "rebounds", :force => true do |t|
@@ -122,6 +123,24 @@ ActiveRecord::Schema.define(:version => 20130224190842) do
     t.integer  "PF"
     t.float    "ST_TO"
     t.float    "ST_TF"
+    t.integer  "day"
+    t.integer  "month"
+    t.integer  "year"
+    t.string   "season"
+    t.string   "player_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "technicals", :force => true do |t|
+    t.string   "_DIV"
+    t.string   "P"
+    t.integer  "GP"
+    t.integer  "GS"
+    t.integer  "PF"
+    t.integer  "TF"
+    t.integer  "FF"
+    t.integer  "DQ"
     t.integer  "day"
     t.integer  "month"
     t.integer  "year"

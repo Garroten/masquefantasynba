@@ -5,6 +5,8 @@ class Player < ActiveRecord::Base
   has_many :rebounds
   has_many :steals
   has_many :tuurnovers
-  has_many :scores
+  has_many :scores  
   attr_accessible :id, :player, :team
+  attr_accessor :fantasy
+  attr_reader :fantasy
 end

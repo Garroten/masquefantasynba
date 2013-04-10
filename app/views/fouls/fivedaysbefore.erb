@@ -18,21 +18,20 @@
         <table>
           <tr>
             <th>Jugador</th>
-            <th>Partidos Jugados</th>
-            <th>Faltas personales</th>
-            <th>Faltas personales por partido</th> 
+            <th>Partios Jugados</th>
+            <th>Puntos Fantasy</th>
+            <th></th>
+            <th></th>
           </tr>
 
-        <% @fouls.each do |foul| %>
-          <tr>
-            <td><%= foul.player.player %></td>
-            <td><%= foul.GP %></td>
-            <td><%= foul.PF %></td>
-            <td><%= foul.PFPG %></td>
-          </tr>
-        <% end %>
+          <% @players.each do |player| %>
+            <tr>        
+              <td><%= player.player %></td>
+              <td><%= player.fantasy.gp %></td>
+              <td><%= player.fantasy.pf %></td>
+            </tr>
+          <% end %>
         </table>
-
-        <%= will_paginate @fouls %>
+        <%= will_paginate @players %>
     </div>
 </section>
